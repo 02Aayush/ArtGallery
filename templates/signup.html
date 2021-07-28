@@ -1,0 +1,28 @@
+{% extends "master.html" %}
+{% block contents %}
+<div class="subtitle" >Sign-Up</div>
+    <hr>
+    <form action="{{ url_for("signup") }}" method="post" name="frm" >
+    <table cellspacing="7px" >
+    <tr><td>Emailid</td><td><input type="email" name="emailid" size="40" required ></td></tr>
+    <tr><td>Name</td><td><input type="text" name="name" size="40" required ></td></tr>
+    <tr><td>ContactNo</td><td><input type="text" name="contactno" size="40" required ></td></tr>
+    <tr><td>MemberShip Type</td><td><input type="radio" name="mtype" value="regular" checked >Regular <input type="radio" name="mtype" value="premium" >Premium</td></tr>
+    <tr><td>Password</td><td><input type="password" name="pwd" size="10" required ></td></tr>
+    <tr><td>Confirm</td><td><input type="password" name="confirm" size="10" required onblur="checkpwd()" ></td></tr>
+    <tr><td></td><td><input type="submit" value="Register" class="btn" > <a href="{{ url_for("index") }}" class="btn"  >Cancel</a> </td></tr>
+    </table>
+    </form>
+    <hr>
+    <script>
+    function checkpwd()
+    {
+        if(document.frm.pwd.value!=document.frm.confirm.value)
+        {
+            alert("Password Not Matching with confirm Value");
+            document.frm.pwd.value="";
+            document.frm.confirm.value="";
+        }
+    }
+    </script>
+{% endblock %}

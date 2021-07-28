@@ -1,0 +1,24 @@
+{% extends "adminmaster.html" %}
+{% block contents %}
+    <table cellspacing="20px" >
+    <tr>
+        <td>
+            <img src="{{ url_for("static",filename="paintings/"+inm) }}" height="400px" >
+        </td>
+        <td style="vertical-align: top" >
+            <form action="{{ url_for("adminedit") }}" method="post" >
+            <input type="hidden" name="pid" value="{{ record[0] }}" >
+            <table cellspacing="5" >
+            <tr><td>Artist</td><td><input type="text" name="artist" value="{{ record[1] }}" ></td></tr>
+            <tr><td>Size</td><td><input type="text" name="size" value="{{ record[3] }}"></td></tr>
+            <tr><td>Price</td><td>Rs <input type="text" name="price" value="{{ record[4] }}" size="3" >/-</td></tr>
+            <tr><td colspan="2" ><hr></td></tr>
+            <tr><td></td><td><input type="submit" value="Update" class="btn" > <a href="{{ url_for("adminpaintings") }}" class="btn" >Cancel</a></td></tr>
+            </table>
+            </form>
+        </td>
+    </tr>
+    </table>
+
+
+{% endblock %}
